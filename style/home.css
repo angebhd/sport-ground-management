@@ -1,0 +1,85 @@
+#home {
+    background-image: url("/assets/img/bg.avif");
+    background-size: cover;
+}
+
+#home div.welcome {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    padding-left: 80px;
+}
+
+#home div.welcome p {
+    font-size: 150px;
+    color: green;
+    margin: 0;
+}
+
+#home div.welcome p.welc-desc {
+    font-size: 60px;
+    margin-top: 20px;
+    margin-left: 50px;
+    width: 80%;
+    color: black;
+    font-style: italic;
+}
+
+#home .b-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+#home .container {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+#home .container h2 {
+    font-size: 50px;
+    margin: 0;
+}
+
+#home .container li {
+    font-size: 30px;
+    margin: 5px;
+}
+#home .container-e{
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+#home .container-e p{
+    font-size: 50px;
+    font-weight: bold;
+    font-style: italic;
+    margin: 0;
+    margin-bottom: 20px;
+}
+#home .container-e p.button{
+    font-size: 30px;
+    font-weight: normal;
+    font-style: normal;
+    display: flex;
+    gap: 30px;
+}
+#home .container-e p.button a{
+    text-decoration: none;
+    color: green;
+    background-color: white;
+    padding: 20px;
+    text-transform: uppercase;
+    border-radius: 20px;
+}
+#home .container-e p.button a:hover{
+    color: white;
+    background-color: green;
+    font-weight: bold;
+
+}
