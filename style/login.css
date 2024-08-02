@@ -1,0 +1,23 @@
+form div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+form div label{
+    margin: 0;
+    margin-top: 30px;
+    width: 30%;
+}
+form div input{
+    margin: 0;
+    margin-top: 30px;
+    width: 50%;
+}
+form div input:placeholder-shown{
+    padding: 0.5rem;
+}
+form .submit{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}

@@ -1,0 +1,55 @@
+#book{
+    padding: 40px;
+}
+#book h1{
+    text-transform: uppercase;
+    width: 60%;
+    text-align: center;
+    font-size: 2.5rem;
+}
+#book form{
+    width: 800px;
+    max-width: 85%;
+    padding: 30px;
+    background-color: rgba(0, 128, 0, 0.1);
+    border: 1px green solid;
+    margin: auto auto;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+form select{
+    background-color: white;
+}
+
+form fieldset {
+    border: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+form select, form input, form button{
+    font-size: 1.5rem;
+    margin: 1.3rem;
+    margin-top: 2rem;
+}
+
+form .duration{
+    width: 90px;
+}
+form fieldset input{
+    margin: 0.5rem;
+}
+form .submit{
+    display: block;
+    padding: 1.3rem;
+    margin: auto auto;
+    margin-top: 30px;
+    background-color: white;
+    color: green;
+    font-weight: bold;
+    cursor: pointer;
+}
+form .submit:hover{
+    background-color: green;
+    color: white;
+}
