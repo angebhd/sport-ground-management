@@ -16,5 +16,15 @@
             $statement->bindParam(':role', $role);
             $statement->execute();
         }
+
+        public static function getUserByUsername($username){
+            require_once ("DBconnection.php");
+            $db = new DBconnection();
+            $db = $db->getConnection();
+            $statement = $db->prepare("SELECT * FROM users WHERE username = :username");
+            $statement->execute([':username' => $username]);
+            return $statement->fetch();
+        }
+
     }
 ?>

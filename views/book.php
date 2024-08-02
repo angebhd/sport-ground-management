@@ -31,7 +31,7 @@
             <input type="radio" name="unit" id="radio-hours" value="hours"> <label for="radio-hours"> Hours </label>
             <input type="radio" name="unit" id="radio-days" value="days"> <label for="radio-hours"> Days </label>
         </fieldset>
-        <button type="submit" class="submit">BOOK</button>
+        <button type="submit" class="submit"><?php echo 'BOOK';?></button>
         
     </form>
 </div>

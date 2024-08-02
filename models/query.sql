@@ -6,4 +6,6 @@ INSERT INTO pitches (name,img) VALUES ('Basket court', '/assets/img/basket1.avif
 CREATE TABLE role (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(6));
 INSERT INTO role (name) VALUES ('user'), ('admin');
 CREATE TABLE users (id INT PRIMARY KEY AUTO_INCREMENT, fname VARCHAR(15), lname VARCHAR(15), username VARCHAR(8), email VARCHAR(20), password VARCHAR(20),role INT, FOREIGN KEY (role) REFERENCES role(id));
+ALTER TABLE users ADD CONSTRAINT unique_email UNIQUE (username);
+
 

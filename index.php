@@ -5,6 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 ?>
+<?php session_start(); ?>
 
 <?php 
     // logic contolleurs
@@ -16,16 +17,19 @@ error_reporting(E_ALL);
                 require_once('controllers/User.php');
                 $user = new UserController();
                 $signin = $user->signin();
-                if ($signin) {echo "<script>alert(\"User added\")</script>"; header("Location: /?page=login");}else{ echo "<script>alert(\"Password are not the same\")</script>"; 
-                    // header("Location: /?page=signup"); 
-                    }
+                if ($signin) {echo "<script>alert(\"User added\")</script>"; header("Location: /?page=login");}else{ echo "<script>alert(\"Password are not the same\")</script>";}
                 break;
+            case 'login':
+                require_once('controllers/User.php');
+                $user = new UserController();
+                $login = $user->login();
+                if($login){ header('Location: /');}else {  echo "<script>alert(\"Invalid cedentials\")</scri>";}
+                break;
+
             default: 
                 header('Location: /?page=home');
                 break;
-
-        }
-        
+        } 
     }
 ?>
 
@@ -58,21 +62,28 @@ error_reporting(E_ALL);
             case 'home':
                 require_once ("views/home.php");
                 break;
+            case 'pitches':
+                require_once ("views/pitches.php");
+                break;
             case 'book':
                 require_once ("views/book.php");
                 break;
             case 'login':
                 require_once ("views/login.php");
                 break;
+            case 'logout':
+                require_once('controllers/User.php');
+                $user = new UserController();
+                $user->logout();
+                header("Location: /");
+                break;
             case 'signup':
                 require_once ("views/signup.php");
                 break;
             default:
                 http_response_code(404);
-
         }
     ?>
-    
     <?php require_once ("views/footer.php"); ?>
 </body>
 </html>

@@ -8,6 +8,14 @@
     <p><a href="/?page=about">ABOUT US</a></p>
 </nav>
 <div class="dashboard">
-    <p><a href="/?pages=dashbord">Dashbord</a>: User</p>
+    <p>Dashbord:<?php if (isset($_SESSION['username'])){ echo "<a href='/?pages=dashbord'>";echo $_SESSION['username']; echo "</a>"; }else {echo 'user';}  ?></p>
+    <?php 
+        if (isset($_SESSION['username'])){
+            echo "<p><a class=\"red\" href=\"/?page=logout\">Logout</a></p>";
+        }else{
+            echo "<p><a href=\"/?page=login\">Login</a></p>";
+        }
+    ?>
+    
 </div>
 </header>
