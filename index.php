@@ -48,8 +48,10 @@ error_reporting(E_ALL);
     <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style/index.css">
     <link rel="stylesheet" href="style/<?php echo $page;?>.css">
-    <link rel="stylesheet" href="style/<?php if (!$includeHeader)echo'login';?>.css">
-    <link rel="stylesheet" href="style/<?php if (!$includeHeader)echo'book';?>.css">
+    <?php if (!$includeHeader){?>
+    <link rel="stylesheet" href="style/<?php echo'login';?>.css">
+    <link rel="stylesheet" href="style/<?php echo'book';?>.css">
+    <?php }?>
 
 
     <title><?php echo strtoupper($page);?> - Uwanja</title>
@@ -67,6 +69,9 @@ error_reporting(E_ALL);
                 break;
             case 'book':
                 require_once ("views/book.php");
+                break;
+            case 'about':
+                require_once ("views/about.php");
                 break;
             case 'login':
                 require_once ("views/login.php");

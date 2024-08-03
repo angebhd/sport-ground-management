@@ -55,12 +55,12 @@ header nav p a:hover {
 }
 header .dashboard{
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
 }
 header .dashboard p {
-
     font-style: italic;
     font-weight: bolder;
+    gap: 10px;
 }
 
 header .dashboard p a {
