@@ -70,6 +70,9 @@ error_reporting(E_ALL);
             case 'book':
                 require_once ("views/book.php");
                 break;
+            case 'contact':
+                require_once ("views/contact.php");
+                break;
             case 'about':
                 require_once ("views/about.php");
                 break;

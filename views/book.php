@@ -3,12 +3,12 @@
     <form action="" method="post">
     
         <label for="date"> Date:</label>
-        <input type="date" name="date" id="">
+        <input type="date" name="date" id="start-date" required>
         <label for="hour"> Hour:</label>
-        <input type="time" name="hour" id="">
+        <input type="time" name="hour" id="" required>
         <br>
         <label for="pitch"> Select the pitch or pool: </label>
-        <select name="pitch" id="">
+        <select name="pitch" id="" required>
             <option value="1"> Basket court</option>
             <option value="2"> Basket court mini</option>
             <option value="3"> Football pitch</option>
@@ -26,7 +26,7 @@
         </select>
         <br>
         <label for="duration"> Duration: </label>
-        <input type="number" name="duration" id="" class="duration">
+        <input type="number" name="duration" id="" class="duration" min="1" required>
         <fieldset>
             <input type="radio" name="unit" id="radio-hours" value="hours"> <label for="radio-hours"> Hours </label>
             <input type="radio" name="unit" id="radio-days" value="days"> <label for="radio-hours"> Days </label>
@@ -35,3 +35,4 @@
         
     </form>
 </div>
+<script src="scripts/book.js"></script>

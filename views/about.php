@@ -59,6 +59,6 @@
     </div>
     <div class="container">
         <h3>Contact us</h3>
-        <p><a href="/?page=contact">Contact page</a></p>
+        <p>Go to the <a href="/?page=contact">contact page</a></p>
     </div>
 </div>
