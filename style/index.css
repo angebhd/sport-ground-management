@@ -64,11 +64,11 @@ header .dashboard p {
 }
 
 header .dashboard p a {
-    margin-left: 10px;
     color: green;
     text-decoration: none;
 }
 header .dashboard p a.red{
+    margin-left: 40px;
     color: red;
 }
 footer {

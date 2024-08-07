@@ -1,6 +1,6 @@
 <div id="book">
     <h1> Book a pitch </h1>
-    <form action="" method="post">
+    <form action="/?page=book" method="post">
     
         <label for="date"> Date:</label>
         <input type="date" name="date" id="start-date" required>
@@ -27,9 +27,11 @@
         <br>
         <label for="duration"> Duration: </label>
         <input type="number" name="duration" id="" class="duration" min="1" required>
-        <fieldset>
-            <input type="radio" name="unit" id="radio-hours" value="hours"> <label for="radio-hours"> Hours </label>
-            <input type="radio" name="unit" id="radio-days" value="days"> <label for="radio-hours"> Days </label>
+        <fieldset required>
+            <input type="radio" name="offer" id="radio-hours" value="1"> <label for="radio-hours"> Hours </label>
+            <input type="radio" name="offer" id="radio-days" value="2"> <label for="radio-hours"> Days </label>
+            <input type="radio" name="offer" id="radio-months" value="3"> <label for="radio-hours"> Months </label>
+
         </fieldset>
         <button type="submit" class="submit"><?php echo 'BOOK';?></button>
         

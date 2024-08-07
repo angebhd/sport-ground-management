@@ -23,7 +23,14 @@ error_reporting(E_ALL);
                 require_once('controllers/User.php');
                 $user = new UserController();
                 $login = $user->login();
-                if($login){ header('Location: /');}else {  echo "<script>alert(\"Invalid cedentials\")</scri>";}
+                if($login){ header('Location: /');}else {  echo "<script>alert(\"Invalid cedentials\")</script>";}
+                break;
+            case 'book':
+                require_once('controllers/Booking.php');
+                $booking = new BookingController();
+                $create = $booking->create();
+                
+                if($create){ header('Location: /'); }
                 break;
 
             default: 

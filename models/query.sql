@@ -9,3 +9,8 @@ CREATE TABLE users (id INT PRIMARY KEY AUTO_INCREMENT, fname VARCHAR(15), lname 
 ALTER TABLE users ADD CONSTRAINT unique_email UNIQUE (username);
 
 
+CREATE TABLE offers(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(15));
+INSERT INTO offers( name) VALUES ('Starter'), ('Proffesionnal'), ('Premium');
+
+CREATE TABLE booking (id INT PRIMARY KEY AUTO_INCREMENT, pitch_id INT, user_id INT, booked_time datetime, offer_id INT, FOREIGN KEY (pitch_id) REFERENCES pitches(id), FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (offer_id) REFERENCES offers(id));
+
