@@ -95,6 +95,9 @@ error_reporting(E_ALL);
             case 'signup':
                 require_once ("views/signup.php");
                 break;
+            case 'dashboard':
+                require_once ("views/dashboard.php");
+                break;
             default:
                 http_response_code(404);
         }

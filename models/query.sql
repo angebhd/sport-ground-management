@@ -14,3 +14,5 @@ INSERT INTO offers( name) VALUES ('Starter'), ('Proffesionnal'), ('Premium');
 
 CREATE TABLE booking (id INT PRIMARY KEY AUTO_INCREMENT, pitch_id INT, user_id INT, booked_time datetime, offer_id INT, FOREIGN KEY (pitch_id) REFERENCES pitches(id), FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (offer_id) REFERENCES offers(id));
 
+SELECT b.id AS SN, p.name AS Pitches, CONCAT(u.fname, " ", u.lname) AS "Client Name", b.booked_time AS "Booked time", o.name AS "Offer"  FROM booking AS b INNER JOIN pitches AS p on p.id = b.pitch_id INNER JOIN users as u ON u.id = b.user_id INNER JOIN offers AS o ON o.id = b.offer_id;
+

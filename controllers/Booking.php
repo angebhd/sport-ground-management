@@ -11,12 +11,25 @@
                 $offer = (int)$_POST['offer'];
 
                 $booked_time = $date . ' ' . $hour;
-                $booked_time = date('Y-m-d H:i:s', strtotime($booked_time));
+                $timestamp = strtotime($booked_time);
 
                 if (isset($_SESSION['user_id'])){
                     require_once ("models/Booking.php");
-                    for ($i=0; $i < $duration; $i++) {                    
-                        Booking::create($pitch, $_SESSION['user_id'], $booked_time, $offer);
+                    for ($i=0; $i < $duration; $i++) {   
+                        if ($offer == 3){
+                            $booked_time = date('Y-m-d H:i:s', $timestamp);
+                            Booking::create($pitch, $_SESSION['user_id'], $booked_time, $offer);
+                            $timestamp = strtotime('+1 month', $timestamp);
+                        }
+                        elseif($offer == 2){
+                            $booked_time = date('Y-m-d H:i:s', $timestamp);
+                            Booking::create($pitch, $_SESSION['user_id'], $booked_time, $offer);
+                            $timestamp = strtotime('+1 day', $timestamp);
+                        }else{
+                            $booked_time = date('Y-m-d H:i:s', $timestamp);
+                            Booking::create($pitch, $_SESSION['user_id'], $booked_time, $offer);
+                            $timestamp = strtotime('+1 hour', $timestamp);
+                        }           
                     }
                     return true;
                 } else{
@@ -26,7 +39,20 @@
                 } 
             }
         }
-
+        public function getBookings(){
+            require_once("models/Booking.php");
+            require_once('models/User.php');
+            $bookings = new Booking();
+            $user = new User();
+            $user = $user->getUserRole($_SESSION['user_id']);
+            $role = (int)$user['role'];
+            if ($role == 2){
+                return $bookings->getAll();
+            }
+            else{
+                return $bookings->userBooking($_SESSION['user_id']);
+            }
+        }
     }
 
 ?>

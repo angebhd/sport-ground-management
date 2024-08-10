@@ -25,6 +25,14 @@
             $statement->execute([':username' => $username]);
             return $statement->fetch();
         }
+        public function getUserRole($id){
+            require_once ("DBconnection.php");
+            $db = new DBconnection();
+            $db = $db->getConnection();
+            $statement = $db->prepare("SELECT role FROM users WHERE id = :id");
+            $statement->execute([':id' => $id]);
+            return $statement->fetch();
+        }
 
     }
 ?>
