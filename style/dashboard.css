@@ -10,7 +10,7 @@ div#dashboard {
 }
 
 table {
-    border: 5px black double;
+    /* border: 5px black double; */
     border-collapse: collapse;
     font-size: 1.2rem;
 }
@@ -19,4 +19,14 @@ td,
 th {
     border: 2px black solid;
     padding: 10px;
+}
+table button {
+    padding: 5px;
+}
+table button.modify{
+    background-color: green;
+}
+
+table button.delete {
+    background-color: red;
 }

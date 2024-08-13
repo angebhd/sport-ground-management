@@ -48,6 +48,18 @@
             session_unset();
             session_destroy();
         }
+
+        public function isAdmin(){
+            require_once('models/User.php');
+            $user = new User();
+            $user = $user->getUserRole($_SESSION['user_id']);
+            $role = (int)$user['role'];
+            if ($role > 1){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 
 ?>

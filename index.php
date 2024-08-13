@@ -30,7 +30,27 @@ error_reporting(E_ALL);
                 $booking = new BookingController();
                 $create = $booking->create();
                 
-                if($create){ header('Location: /'); }
+                if($create){ 
+                    echo "<script>alert('Booking saved')</script>";}
+                break;
+            case 'modifyBooking':
+                $page = 'modifyBooking';
+                break;
+            case 'deleteBooking':
+                $page = 'deleteBooking';
+                break;
+            case 'dashboard':
+                require_once('controllers/Booking.php');
+                $booking = new BookingController();
+                if ($_POST['operation'] == 'modify'){
+                    $updateBooking = $booking->updateBookingByID($_POST['booking_id']);
+                    if ($updateBooking){ echo '<script> alert("Booking updated successfully") </script>';}
+                }elseif($_POST['operation'] == 'delete'){
+                    $deleteBooking = $booking->deleteBookingByID($_POST['booking_id']);
+                    if ($deleteBooking){ echo '<script> alert("Booking Deleted successfully") </script>';}
+
+                }
+
                 break;
 
             default: 
@@ -39,14 +59,12 @@ error_reporting(E_ALL);
         } 
     }
 ?>
-
 <?php 
 //Handling the page to display
     $page = isset($_GET['page'])?$_GET['page'] : 'home';
     $includeHeader = true;
     if ($page == 'login' || $page == 'signup'){ $includeHeader = false; }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +77,9 @@ error_reporting(E_ALL);
     <link rel="stylesheet" href="style/<?php echo'login';?>.css">
     <link rel="stylesheet" href="style/<?php echo'book';?>.css">
     <?php }?>
+    <?php if ($page == 'deleteBooking'){ echo '<link rel="stylesheet" href="style/dashboard.css">'; }?>
 
+    <?php if ($page == 'modifyBooking' || $page == 'deleteBooking'){ echo '<link rel="stylesheet" href="style/book.css">'; }?>
 
     <title><?php echo strtoupper($page);?> - Uwanja</title>
 </head>
@@ -97,6 +117,12 @@ error_reporting(E_ALL);
                 break;
             case 'dashboard':
                 require_once ("views/dashboard.php");
+                break;
+            case 'modifyBooking':
+                require_once ("views/modifyBooking.php");
+                break;
+            case 'deleteBooking':
+                require_once ("views/deleteBooking.php");
                 break;
             default:
                 http_response_code(404);

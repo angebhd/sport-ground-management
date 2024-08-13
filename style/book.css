@@ -53,3 +53,8 @@ form .submit:hover{
     background-color: green;
     color: white;
 }
+
+
+table{
+    margin: auto;
+}

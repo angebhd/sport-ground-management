@@ -15,22 +15,8 @@
 
                 if (isset($_SESSION['user_id'])){
                     require_once ("models/Booking.php");
-                    for ($i=0; $i < $duration; $i++) {   
-                        if ($offer == 3){
-                            $booked_time = date('Y-m-d H:i:s', $timestamp);
-                            Booking::create($pitch, $_SESSION['user_id'], $booked_time, $offer);
-                            $timestamp = strtotime('+1 month', $timestamp);
-                        }
-                        elseif($offer == 2){
-                            $booked_time = date('Y-m-d H:i:s', $timestamp);
-                            Booking::create($pitch, $_SESSION['user_id'], $booked_time, $offer);
-                            $timestamp = strtotime('+1 day', $timestamp);
-                        }else{
-                            $booked_time = date('Y-m-d H:i:s', $timestamp);
-                            Booking::create($pitch, $_SESSION['user_id'], $booked_time, $offer);
-                            $timestamp = strtotime('+1 hour', $timestamp);
-                        }           
-                    }
+                    Booking::create($pitch, $_SESSION['user_id'], $booked_time, $duration, $offer);
+                    
                     return true;
                 } else{
                     echo "<script>alert(\"To book a pitch, you have to login\")</script>";
@@ -52,6 +38,35 @@
             else{
                 return $bookings->userBooking($_SESSION['user_id']);
             }
+        }
+        public function getBookingByID($id){
+            require_once("models/Booking.php");
+            $booking = new Booking();
+            return $booking->onebooking($id);
+        }
+        public function getOneBooking($id){
+            require_once("models/Booking.php");
+            $booking = new Booking();
+            return $booking->getOneBooking($id);
+        }
+
+        public function updateBookingByID($id){
+            $date = $_POST['date'];
+            $hour = $_POST['hour'];
+            $pitch = (int)$_POST['pitch'];
+            $duration = (int)$_POST['duration'];
+            $offer = (int)$_POST['offer'];
+
+            $booked_time = $date . ' ' . $hour;
+
+            require_once("models/Booking.php");
+            $booking = new Booking();
+            return $booking->updateOneBooking($booked_time, $duration, $pitch, $offer, $id);
+        }
+        public function deleteBookingByID($id){
+            require_once("models/Booking.php");
+            $booking = new Booking();
+            return $booking->deleteOne($id);
         }
     }
 

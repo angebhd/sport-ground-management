@@ -9,6 +9,7 @@
         <br>
         <label for="pitch"> Select the pitch or pool: </label>
         <select name="pitch" id="" required>
+            <option value="" disabled selected> Choose a pool</option>
             <option value="1"> Basket court</option>
             <option value="2"> Basket court mini</option>
             <option value="3"> Football pitch</option>

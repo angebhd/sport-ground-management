@@ -11,8 +11,14 @@ ALTER TABLE users ADD CONSTRAINT unique_email UNIQUE (username);
 
 CREATE TABLE offers(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(15));
 INSERT INTO offers( name) VALUES ('Starter'), ('Proffesionnal'), ('Premium');
+ALTER TABLE offers ADD duration VARCHAR(10);
+UPDATE offers SET duration = 'Hour' WHERE id = 1;
+UPDATE offers SET duration = 'Day' WHERE id = 2;
+UPDATE offers SET duration = 'Month' WHERE id = 3;
+
 
 CREATE TABLE booking (id INT PRIMARY KEY AUTO_INCREMENT, pitch_id INT, user_id INT, booked_time datetime, offer_id INT, FOREIGN KEY (pitch_id) REFERENCES pitches(id), FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (offer_id) REFERENCES offers(id));
+ALTER TABLE booking ADD duration INT AFTER booked_time;
 
-SELECT b.id AS SN, p.name AS Pitches, CONCAT(u.fname, " ", u.lname) AS "Client Name", b.booked_time AS "Booked time", o.name AS "Offer"  FROM booking AS b INNER JOIN pitches AS p on p.id = b.pitch_id INNER JOIN users as u ON u.id = b.user_id INNER JOIN offers AS o ON o.id = b.offer_id;
+SELECT b.id AS SN, p.name AS Pitches, CONCAT(u.fname, " ", u.lname) AS "Client Name", b.booked_time AS "Booked time", b.duration AS "Duration",o.duration AS "Duration_unit" , o.name AS "Offer"  FROM booking AS b INNER JOIN pitches AS p on p.id = b.pitch_id INNER JOIN users as u ON u.id = b.user_id INNER JOIN offers AS o ON o.id = b.offer_id;
 
